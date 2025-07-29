@@ -16,6 +16,7 @@ pipeline {
 
         stage('Run API Tests') {
             steps {
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                 sh '''
                      npx newman run collections/performance_collection4.json \
                       -e environments/postman_environment4.json \
@@ -24,11 +25,12 @@ pipeline {
                       --reporter-html-export newman-report.html
                 '''
             }
+            }
         }
 
         stage('Archive Report') {
             steps {
-                archiveArtifacts artifacts: 'newman-report.html', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'newman-report.html', allowEmptyArchive: true
             }
         }
     }
