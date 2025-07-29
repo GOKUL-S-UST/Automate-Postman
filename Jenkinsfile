@@ -6,7 +6,6 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/GOKUL-S-UST/Automate-Postman.git'
             }
-            }
         }
 
         stage('Install Newman') {
@@ -33,4 +32,4 @@ pipeline {
             }
         }
     }
-
+}
