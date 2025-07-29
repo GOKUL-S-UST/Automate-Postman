@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                      npx newman run collections/performance_collection4.json \
-                      -e environments/postman_environments4.json \
+                      -e environments/postman_environment4.json \
                       --env-var "client_secret=$client_secret"
                       --reporters cli,html \
                       --reporter-html-export newman-report.html
