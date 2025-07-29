@@ -30,7 +30,7 @@ pipeline {
 
         stage('Archive Report') {
             steps {
-                archiveArtifacts artifacts: 'newman-report.html', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'newman-report.html'
             }
         }
     }
