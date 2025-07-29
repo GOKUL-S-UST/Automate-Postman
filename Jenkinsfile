@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Newman') {
             steps {
-                sh 'npm install -g newman'
+               sh 'npm install newman@5.3.2'
             }
         }
 
