@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/GOKUL-S-UST/Automate-Postman'
+                git 'https://github.com/GOKUL-S-UST/Automate-Postman.git'
             }
         }
 
