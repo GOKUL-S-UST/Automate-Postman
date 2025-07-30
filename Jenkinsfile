@@ -8,11 +8,11 @@ pipeline {
             }
         }
 
-        stage('Install Newman') {
+        stage('Install Newman & Reporter') {
             steps {
                 sh '''
                     npm install newman@5.3.2
-                    npm install newman-reporter-html
+                    npm install newman-reporter-htmlextra
                 '''
             }
         }
@@ -29,8 +29,8 @@ pipeline {
                             npx newman run collections/performance_collection4.json \
                               -e environments/postman_environment4.json \
                               --env-var "client_secret=$client_secret" \
-                              --reporters cli,html \
-                              --reporter-html-export reports/newman-report.html
+                              --reporters cli,htmlextra \
+                              --reporter-htmlextra-export reports/newman-report.html
 
                             echo "Reports directory content:"
                             ls -l reports
