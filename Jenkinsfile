@@ -10,7 +10,10 @@ pipeline {
 
         stage('Install Newman') {
             steps {
-                sh 'npm install newman@5.3.2'
+                  sh '''
+            npm install newman@5.3.2
+            npm install newman-reporter-html
+        '''
             }
         }
 stage('Run API Tests') {
