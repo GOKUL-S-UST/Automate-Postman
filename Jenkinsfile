@@ -15,19 +15,21 @@ pipeline {
         }
 
         stage('Run API Tests') {
-            steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    sh '''
-                        mkdir -p reports
-                        npx newman run collections/performance_collection4.json \
-                          -e environments/postman_environment4.json \
-                          --env-var "client_secret=$client_secret" \
-                          --reporters cli,html \
-                          --reporter-html-export reports/newman-report.html
-                    '''
-                }
-            }
+    steps {
+        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+            sh '''
+                mkdir -p reports
+                npm install -g newman newman-reporter-htmlextra
+                npx newman run collections/performance_collection4.json \
+                  -e environments/postman_environment4.json \
+                  --insecure \
+                  --env-var "client_secret=$client_secret" \
+                  --reporters cli,htmlextra \
+                  --reporter-htmlextra-export reports/newman-report.html
+            '''
         }
+    }
+}
 
         stage('Archive Report') {
             steps {
