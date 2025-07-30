@@ -10,10 +10,10 @@ pipeline {
 
         stage('Install Newman & Reporter') {
             steps {
-                sh '''
-                    npm install newman@6.1.2
-                    npm install newman-reporter-htmlextra
-                '''
+                 sh '''
+            npm install newman@5.3.2
+            npm install newman-reporter-html --legacy-peer-deps
+        '''
             }
         }
 
