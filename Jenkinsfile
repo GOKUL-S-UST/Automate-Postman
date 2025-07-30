@@ -19,7 +19,7 @@ pipeline {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
             sh '''
                 mkdir -p reports
-                npm install -g newman newman-reporter-htmlextra@1.23.1
+                npm install -g newman-reporter-htmlextra@1.21.1
                 npx newman run collections/performance_collection4.json \
                   -e environments/postman_environment4.json \
                   --insecure \
